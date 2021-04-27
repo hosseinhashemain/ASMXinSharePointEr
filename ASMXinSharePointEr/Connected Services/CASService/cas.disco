@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://sdp.qom.ir/services/userpass/cas.asmx?wsdl" docRef="https://sdp.qom.ir/services/userpass/cas.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://sdp.qom.ir/services/userpass/cas.asmx" xmlns:q1="http://IntegrationLayer.Portal/" binding="q1:IntegrationService_UserSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://sdp.qom.ir/services/userpass/cas.asmx" xmlns:q2="http://IntegrationLayer.Portal/" binding="q2:IntegrationService_UserSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

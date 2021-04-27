@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://IntegrationLayer.Portal/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://IntegrationLayer.Portal/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://IntegrationLayer.Portal/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetListOfUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListOfUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListOfUsersResult" type="tns:ArrayOfUserAccount" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserAccount">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserAccount" nillable="true" type="tns:UserAccount" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserAccount">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UID" nillable="true" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserAccountResult" type="tns:UserAccount" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterUserResult" type="tns:ResultRegisterUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRegisterUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateUserPass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserPassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateUserPassResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserProfileResult" type="tns:ResultGetUserProfile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultGetUserProfile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobileNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEmployee" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="NationalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Avatar" type="tns:Image" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Image">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Tiny" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Small" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Medium" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Large" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Master" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetProfileByUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProfileByUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProfileByUsernameResult" type="tns:UserProfile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserProfile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobileNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEmployee" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="NationalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BirthDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Avatar" type="tns:Image" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetProfileByNationalCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nationalCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProfileByNationalCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProfileByNationalCodeResult" type="tns:UserProfile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProfileByMobileNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mobileNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProfileByMobileNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProfileByMobileNumberResult" type="tns:UserProfile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeStatus137">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tracking_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeStatus137Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeStatus137Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthenticatedUserBySessionID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="session" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthenticatedUserBySessionIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuthenticatedUserBySessionIDResult" type="tns:ResultGetAuthenticatedUserBySessionID" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultGetAuthenticatedUserBySessionID">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPasmandInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nationalCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPasmandInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPasmandInfoResult" type="tns:PasmandInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PasmandInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="HamyarPasmandScore" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalScore" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialCount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IconURL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTopPasmandUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PortalUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PortalPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="days" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopPasmandUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopPasmandUsersResult" type="tns:ArrayOfPasmandUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPasmandUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PasmandUser" nillable="true" type="tns:PasmandUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PasmandUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rank" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Test">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AdditionalInfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SoapToken" type="tns:SoapToken" />
+      <s:complexType name="SoapToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TokenID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestSEQ" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEQExecutionCondition" type="tns:ExecutionCondition" />
+          <s:element minOccurs="1" maxOccurs="1" name="SEQID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="UseCache" nillable="true" type="s:boolean" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="ExecutionCondition">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ExecutableFrom" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExecutableUntil" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExecutionDependOn" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalTrys" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReTryInterval" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FailNotifyType" type="tns:FailNotifyTypes" />
+          <s:element minOccurs="0" maxOccurs="1" name="CallBackUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FailNotifyTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="SMS" />
+          <s:enumeration value="EMail" />
+          <s:enumeration value="SMSAndEMail" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="RandomRequestTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="RandomRequestTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RandomRequestTestResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isTokenAuthorized">
+        <s:complexType />
+      </s:element>
+      <s:element name="isTokenAuthorizedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isTokenAuthorizedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isTokenAuthorizedForMethod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isTokenAuthorizedForMethodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isTokenAuthorizedForMethodResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetListOfUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListOfUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListOfUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserAccount" />
+  </wsdl:message>
+  <wsdl:message name="GetUserAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUserSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterUser" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUserSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserPassSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateUserPass" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserPassSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateUserPassResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="GetUserProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileByUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProfileByUsername" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileByUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProfileByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileByNationalCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProfileByNationalCode" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileByNationalCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProfileByNationalCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileByMobileNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProfileByMobileNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileByMobileNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProfileByMobileNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeStatus137SoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeStatus137" />
+  </wsdl:message>
+  <wsdl:message name="ChangeStatus137SoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeStatus137Response" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticatedUserBySessionIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuthenticatedUserBySessionID" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticatedUserBySessionIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuthenticatedUserBySessionIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPasmandInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPasmandInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPasmandInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPasmandInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTopPasmandUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTopPasmandUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetTopPasmandUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTopPasmandUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapIn">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapOut">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapToken">
+    <wsdl:part name="SoapToken" element="tns:SoapToken" />
+  </wsdl:message>
+  <wsdl:message name="RandomRequestTestSoapIn">
+    <wsdl:part name="parameters" element="tns:RandomRequestTest" />
+  </wsdl:message>
+  <wsdl:message name="RandomRequestTestSoapOut">
+    <wsdl:part name="parameters" element="tns:RandomRequestTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="RandomRequestTestSoapToken">
+    <wsdl:part name="SoapToken" element="tns:SoapToken" />
+  </wsdl:message>
+  <wsdl:message name="isTokenAuthorizedSoapIn">
+    <wsdl:part name="parameters" element="tns:isTokenAuthorized" />
+  </wsdl:message>
+  <wsdl:message name="isTokenAuthorizedSoapOut">
+    <wsdl:part name="parameters" element="tns:isTokenAuthorizedResponse" />
+  </wsdl:message>
+  <wsdl:message name="isTokenAuthorizedSoapToken">
+    <wsdl:part name="SoapToken" element="tns:SoapToken" />
+  </wsdl:message>
+  <wsdl:message name="isTokenAuthorizedForMethodSoapIn">
+    <wsdl:part name="parameters" element="tns:isTokenAuthorizedForMethod" />
+  </wsdl:message>
+  <wsdl:message name="isTokenAuthorizedForMethodSoapOut">
+    <wsdl:part name="parameters" element="tns:isTokenAuthorizedForMethodResponse" />
+  </wsdl:message>
+  <wsdl:message name="isTokenAuthorizedForMethodSoapToken">
+    <wsdl:part name="SoapToken" element="tns:SoapToken" />
+  </wsdl:message>
+  <wsdl:portType name="IntegrationService_UserSoap">
+    <wsdl:operation name="GetListOfUsers">
+      <wsdl:input message="tns:GetListOfUsersSoapIn" />
+      <wsdl:output message="tns:GetListOfUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccount">
+      <wsdl:input message="tns:GetUserAccountSoapIn" />
+      <wsdl:output message="tns:GetUserAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <wsdl:input message="tns:RegisterUserSoapIn" />
+      <wsdl:output message="tns:RegisterUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserPass">
+      <wsdl:input message="tns:ValidateUserPassSoapIn" />
+      <wsdl:output message="tns:ValidateUserPassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <wsdl:input message="tns:GetUserProfileSoapIn" />
+      <wsdl:output message="tns:GetUserProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByUsername">
+      <wsdl:input message="tns:GetProfileByUsernameSoapIn" />
+      <wsdl:output message="tns:GetProfileByUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByNationalCode">
+      <wsdl:input message="tns:GetProfileByNationalCodeSoapIn" />
+      <wsdl:output message="tns:GetProfileByNationalCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByMobileNumber">
+      <wsdl:input message="tns:GetProfileByMobileNumberSoapIn" />
+      <wsdl:output message="tns:GetProfileByMobileNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStatus137">
+      <wsdl:input message="tns:ChangeStatus137SoapIn" />
+      <wsdl:output message="tns:ChangeStatus137SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticatedUserBySessionID">
+      <wsdl:input message="tns:GetAuthenticatedUserBySessionIDSoapIn" />
+      <wsdl:output message="tns:GetAuthenticatedUserBySessionIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPasmandInfo">
+      <wsdl:input message="tns:GetPasmandInfoSoapIn" />
+      <wsdl:output message="tns:GetPasmandInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTopPasmandUsers">
+      <wsdl:input message="tns:GetTopPasmandUsersSoapIn" />
+      <wsdl:output message="tns:GetTopPasmandUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <wsdl:input message="tns:TestSoapIn" />
+      <wsdl:output message="tns:TestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RandomRequestTest">
+      <wsdl:input message="tns:RandomRequestTestSoapIn" />
+      <wsdl:output message="tns:RandomRequestTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isTokenAuthorized">
+      <wsdl:input message="tns:isTokenAuthorizedSoapIn" />
+      <wsdl:output message="tns:isTokenAuthorizedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isTokenAuthorizedForMethod">
+      <wsdl:input message="tns:isTokenAuthorizedForMethodSoapIn" />
+      <wsdl:output message="tns:isTokenAuthorizedForMethodSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IntegrationService_UserSoap" type="tns:IntegrationService_UserSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListOfUsers">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetListOfUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccount">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetUserAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/RegisterUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserPass">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/ValidateUserPass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByUsername">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetProfileByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByNationalCode">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetProfileByNationalCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByMobileNumber">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetProfileByMobileNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStatus137">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/ChangeStatus137" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticatedUserBySessionID">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetAuthenticatedUserBySessionID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPasmandInfo">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetPasmandInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopPasmandUsers">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/GetTopPasmandUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/Test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TestSoapToken" part="SoapToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:TestSoapToken" part="SoapToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RandomRequestTest">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/RandomRequestTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RandomRequestTestSoapToken" part="SoapToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RandomRequestTestSoapToken" part="SoapToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isTokenAuthorized">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/isTokenAuthorized" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:isTokenAuthorizedSoapToken" part="SoapToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:isTokenAuthorizedSoapToken" part="SoapToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isTokenAuthorizedForMethod">
+      <soap:operation soapAction="http://IntegrationLayer.Portal/isTokenAuthorizedForMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:isTokenAuthorizedForMethodSoapToken" part="SoapToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:isTokenAuthorizedForMethodSoapToken" part="SoapToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IntegrationService_UserSoap12" type="tns:IntegrationService_UserSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListOfUsers">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetListOfUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAccount">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetUserAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/RegisterUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserPass">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/ValidateUserPass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByUsername">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetProfileByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByNationalCode">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetProfileByNationalCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileByMobileNumber">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetProfileByMobileNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStatus137">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/ChangeStatus137" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticatedUserBySessionID">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetAuthenticatedUserBySessionID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPasmandInfo">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetPasmandInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopPasmandUsers">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/GetTopPasmandUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TestSoapToken" part="SoapToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TestSoapToken" part="SoapToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RandomRequestTest">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/RandomRequestTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RandomRequestTestSoapToken" part="SoapToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RandomRequestTestSoapToken" part="SoapToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isTokenAuthorized">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/isTokenAuthorized" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:isTokenAuthorizedSoapToken" part="SoapToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:isTokenAuthorizedSoapToken" part="SoapToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isTokenAuthorizedForMethod">
+      <soap12:operation soapAction="http://IntegrationLayer.Portal/isTokenAuthorizedForMethod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:isTokenAuthorizedForMethodSoapToken" part="SoapToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:isTokenAuthorizedForMethodSoapToken" part="SoapToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IntegrationService_User">
+    <wsdl:port name="IntegrationService_UserSoap" binding="tns:IntegrationService_UserSoap">
+      <soap:address location="https://sdp.qom.ir/services/userpass/cas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IntegrationService_UserSoap12" binding="tns:IntegrationService_UserSoap12">
+      <soap12:address location="https://sdp.qom.ir/services/userpass/cas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
